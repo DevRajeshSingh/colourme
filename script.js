@@ -11,6 +11,8 @@ let qnaset = {};
 
 for (let i = 0; i < color_value.length; i++) {
   color_value[i].addEventListener("click", function () {
+    maincontainer.classList.remove(...maincontainer.classList);
+
     for (let j = 0; j < color_value.length; j++) {
       color_value[j].classList.remove("selected");
     }
@@ -18,11 +20,11 @@ for (let i = 0; i < color_value.length; i++) {
       color_value[i].classList.add("selected");
     }
     color = color_value[i].dataset.colorvalue;
-    maincontainer.classList.remove(...maincontainer.classList);
-    maincontainer.classList.add(`class${color_value[i].dataset.colorvalue.substring(1)}`);
+    maincontainer.classList.add(
+      `class${color_value[i].dataset.colorvalue.substring(1)}`
+    );
   });
 }
-
 
 drawing.addEventListener("click", (event) => {
   event.target.style.fill = color;
@@ -54,7 +56,6 @@ document.addEventListener("contextmenu", (ev) => {
   }
   color = "transparent";
   maincontainer.classList.remove(...maincontainer.classList);
-
 });
 
 const generateqna = () => {
